@@ -9,5 +9,6 @@
 #ifndef _ZDAudioTool_h
 #define _ZDAudioTool_h
 
+#import "ZDAudioRecorder.h"
 
 #endif

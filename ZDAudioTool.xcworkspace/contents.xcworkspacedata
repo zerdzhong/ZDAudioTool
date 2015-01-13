@@ -7,6 +7,14 @@
       <FileRef
          location = "group:ZDAudioTool.h">
       </FileRef>
+      <Group
+         location = "group:Record"
+         name = "Record">
+      </Group>
+      <Group
+         location = "group:Play"
+         name = "Play">
+      </Group>
    </Group>
    <FileRef
       location = "group:ZDAudioTool Example/ZDAudioTool Example.xcodeproj">

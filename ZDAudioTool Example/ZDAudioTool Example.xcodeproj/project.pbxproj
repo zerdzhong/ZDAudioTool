@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CC8F85E1A64AD65006FBCB7 /* ZDAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC8F85D1A64AD65006FBCB7 /* ZDAudioRecorder.m */; };
+		5CC8F8601A64AE0E006FBCB7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC8F85F1A64AE0E006FBCB7 /* AudioToolbox.framework */; };
 		5CEAB53F1A641A8900380386 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEAB53E1A641A8900380386 /* main.m */; };
 		5CEAB5421A641A8900380386 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEAB5411A641A8900380386 /* AppDelegate.m */; };
 		5CEAB5451A641A8900380386 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CEAB5441A641A8900380386 /* ViewController.m */; };
@@ -27,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5CC8F85B1A64ABDA006FBCB7 /* ZDAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDAudioTool.h; sourceTree = "<group>"; };
+		5CC8F85C1A64AD65006FBCB7 /* ZDAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDAudioRecorder.h; sourceTree = "<group>"; };
+		5CC8F85D1A64AD65006FBCB7 /* ZDAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDAudioRecorder.m; sourceTree = "<group>"; };
+		5CC8F85F1A64AE0E006FBCB7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5CEAB5391A641A8900380386 /* ZDAudioTool Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZDAudioTool Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CEAB53D1A641A8900380386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CEAB53E1A641A8900380386 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,7 +46,6 @@
 		5CEAB5521A641A8900380386 /* ZDAudioTool ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ZDAudioTool ExampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CEAB5571A641A8900380386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CEAB5581A641A8900380386 /* ZDAudioTool_ExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZDAudioTool_ExampleTests.m; sourceTree = "<group>"; };
-		5CEAB5651A641C2500380386 /* ZDAudioTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZDAudioTool.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CC8F8601A64AE0E006FBCB7 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,10 +67,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CC8F8581A64ABDA006FBCB7 /* ZDAudioTool */ = {
+			isa = PBXGroup;
+			children = (
+				5CC8F8591A64ABDA006FBCB7 /* Play */,
+				5CC8F85A1A64ABDA006FBCB7 /* Record */,
+				5CC8F85B1A64ABDA006FBCB7 /* ZDAudioTool.h */,
+			);
+			name = ZDAudioTool;
+			path = ../../ZDAudioTool;
+			sourceTree = "<group>";
+		};
+		5CC8F8591A64ABDA006FBCB7 /* Play */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Play;
+			sourceTree = "<group>";
+		};
+		5CC8F85A1A64ABDA006FBCB7 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				5CC8F85C1A64AD65006FBCB7 /* ZDAudioRecorder.h */,
+				5CC8F85D1A64AD65006FBCB7 /* ZDAudioRecorder.m */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		5CC8F8611A64AE3D006FBCB7 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				5CC8F85F1A64AE0E006FBCB7 /* AudioToolbox.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
 		5CEAB5301A641A8900380386 = {
 			isa = PBXGroup;
 			children = (
-				5CEAB5641A641C2500380386 /* ZDAudioTool */,
 				5CEAB53B1A641A8900380386 /* ZDAudioTool Example */,
 				5CEAB5551A641A8900380386 /* ZDAudioTool ExampleTests */,
 				5CEAB53A1A641A8900380386 /* Products */,
@@ -83,6 +123,7 @@
 		5CEAB53B1A641A8900380386 /* ZDAudioTool Example */ = {
 			isa = PBXGroup;
 			children = (
+				5CC8F8581A64ABDA006FBCB7 /* ZDAudioTool */,
 				5CEAB5401A641A8900380386 /* AppDelegate.h */,
 				5CEAB5411A641A8900380386 /* AppDelegate.m */,
 				5CEAB5431A641A8900380386 /* ViewController.h */,
@@ -90,6 +131,7 @@
 				5CEAB5461A641A8900380386 /* Main.storyboard */,
 				5CEAB5491A641A8900380386 /* Images.xcassets */,
 				5CEAB54B1A641A8900380386 /* LaunchScreen.xib */,
+				5CC8F8611A64AE3D006FBCB7 /* Framework */,
 				5CEAB53C1A641A8900380386 /* Supporting Files */,
 			);
 			path = "ZDAudioTool Example";
@@ -119,15 +161,6 @@
 				5CEAB5571A641A8900380386 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5CEAB5641A641C2500380386 /* ZDAudioTool */ = {
-			isa = PBXGroup;
-			children = (
-				5CEAB5651A641C2500380386 /* ZDAudioTool.h */,
-			);
-			name = ZDAudioTool;
-			path = ../ZDAudioTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +265,7 @@
 			files = (
 				5CEAB5451A641A8900380386 /* ViewController.m in Sources */,
 				5CEAB5421A641A8900380386 /* AppDelegate.m in Sources */,
+				5CC8F85E1A64AD65006FBCB7 /* ZDAudioRecorder.m in Sources */,
 				5CEAB53F1A641A8900380386 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
