@@ -16,4 +16,5 @@
 -(void)drawProgress:(float)progress;
 -(void)resetProgress;
 -(void)stopProgress;
+
 @end

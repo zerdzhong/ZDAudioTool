@@ -15,8 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 
-@property (nonatomic, strong) ZDAudioRecorder *audioRecorder;
-
 @property (nonatomic, strong) NSMutableArray *recordTitles;
 @end
 
@@ -25,8 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _audioRecorder = [[ZDAudioRecorder alloc]init];
-    _audioRecorder.delegate = self;
     
     self.tableView.tableFooterView = [UIView new];
     self.recordTitles = [NSMutableArray array];
@@ -35,17 +31,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)onRecordClicked:(id)sender {
-    if ([_audioRecorder isRunning]) {
-        [_audioRecorder stopRecord];
-        [_recordButton setTitle:@"record" forState:UIControlStateNormal];
-    }else {
-        [_audioRecorder startRecord:@"test.pcm"];
-        NSLog(@"%@",[NSTemporaryDirectory() stringByAppendingPathComponent:@"test.pcm"]);
-        [_recordButton setTitle:@"stop" forState:UIControlStateNormal];
-    }
 }
 
 - (IBAction)onAddItemClicked:(id)sender {

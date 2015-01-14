@@ -89,49 +89,49 @@ static void HandleInputBuffer (
 {
     self = [super init];
     if (self) {
-        //init audioFormat
-        [self setAudioFormat];
         
-        //Create the Recording Audio Queue
-        AudioQueueNewInput(&recordFormat, HandleInputBuffer, &audioRecorderState, NULL, kCFRunLoopCommonModes, 0, &audioRecorderState.mQueue);
-        
-        //Getting the Full Audio Format from the Audio Queue
-        UInt32 dataFormatSize = sizeof (recordFormat);
-        AudioQueueGetProperty(audioRecorderState.mQueue, kAudioQueueProperty_StreamDescription, &recordFormat, &dataFormatSize);
-        
-        // allocate and enqueue buffers
-        // enough bytes for half a second
-        
-        UInt32 bufferByteSize = [self deriveBufferSizeWithDesc:&recordFormat andSeconds:kBufferDurationSeconds];
-        
-        for (int i = 0; i < kBufferNumber; ++i) {
-            
-            AudioQueueAllocateBuffer (audioRecorderState.mQueue,
-                                      bufferByteSize,
-                                      &audioRecorderState.mBuffers[i]
-                                      );
-            
-            
-            
-            AudioQueueEnqueueBuffer (audioRecorderState.mQueue,
-                                     audioRecorderState.mBuffers[i],
-                                     0,
-                                     NULL
-                                     );
-            
-        }
-        
-        //Turn on level metering
-        UInt32 on = 1;
-        AudioQueueSetProperty(audioRecorderState.mQueue,kAudioQueueProperty_EnableLevelMetering,&on,sizeof(on));
-        
-        audioRecorderState.recorder = self;
     }
     return self;
 }
 
 #pragma mark- 外部接口实现
 - (void)startRecord:(NSString *)fileName{
+    
+    //init audioFormat
+    [self setAudioFormat];
+    
+    //Create the Recording Audio Queue
+    AudioQueueNewInput(&recordFormat, HandleInputBuffer, &audioRecorderState, NULL, kCFRunLoopCommonModes, 0, &audioRecorderState.mQueue);
+    
+    //Getting the Full Audio Format from the Audio Queue
+    UInt32 dataFormatSize = sizeof (recordFormat);
+    AudioQueueGetProperty(audioRecorderState.mQueue, kAudioQueueProperty_StreamDescription, &recordFormat, &dataFormatSize);
+    
+    // allocate and enqueue buffers
+    // enough bytes for half a second
+    
+    UInt32 bufferByteSize = [self deriveBufferSizeWithDesc:&recordFormat andSeconds:kBufferDurationSeconds];
+    
+    for (int i = 0; i < kBufferNumber; ++i) {
+        
+        AudioQueueAllocateBuffer (audioRecorderState.mQueue,
+                                  bufferByteSize,
+                                  &audioRecorderState.mBuffers[i]
+                                  );
+        
+        
+        
+        AudioQueueEnqueueBuffer (audioRecorderState.mQueue,
+                                 audioRecorderState.mBuffers[i],
+                                 0,
+                                 NULL
+                                 );
+        
+    }
+    
+    //Turn on level metering
+    UInt32 on = 1;
+    AudioQueueSetProperty(audioRecorderState.mQueue,kAudioQueueProperty_EnableLevelMetering,&on,sizeof(on));
     
     //create audio file depend recordFormat and filepath
     NSString *recordFileString = [NSTemporaryDirectory() stringByAppendingPathComponent: fileName];
@@ -150,6 +150,7 @@ static void HandleInputBuffer (
     
     audioRecorderState.mIsRunning = true;
     audioRecorderState.mCurrentPacket = 0;
+    audioRecorderState.recorder = self;
     AudioQueueStart(audioRecorderState.mQueue, NULL);
     
 }

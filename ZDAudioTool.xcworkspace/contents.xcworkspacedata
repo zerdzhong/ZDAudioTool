@@ -10,6 +10,12 @@
       <Group
          location = "group:Record"
          name = "Record">
+         <FileRef
+            location = "group:ZDAudioRecorder.h">
+         </FileRef>
+         <FileRef
+            location = "group:ZDAudioRecorder.m">
+         </FileRef>
       </Group>
       <Group
          location = "group:Play"

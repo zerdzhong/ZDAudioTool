@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tPa-B6-LJl">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--ZDAudioToolExample-->
@@ -13,11 +14,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="moh-Yp-adu">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="60" id="moh-Yp-adu" customClass="ZDTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="moh-Yp-adu" id="JvB-Cs-CTF">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQq-pi-ajh" customClass="ProgressButtion">
+                                            <rect key="frame" x="537" y="8" width="55" height="43"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="56x-X0-7iM"/>
+                                                <constraint firstAttribute="height" constant="55" id="dgm-HG-Tu5"/>
+                                            </constraints>
+                                            <state key="normal" image="btn_speech-sound_nor">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="btn_speech-sound_sel"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="dgm-HG-Tu5"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <action selector="onRecordClicked:" destination="moh-Yp-adu" eventType="touchUpInside" id="3wb-sY-LSG"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cQq-pi-ajh" secondAttribute="bottom" id="7c8-MD-iYY"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="cQq-pi-ajh" secondAttribute="trailing" id="PJw-cQ-TvY"/>
+                                        <constraint firstItem="cQq-pi-ajh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JvB-Cs-CTF" secondAttribute="topMargin" id="YeP-wx-mvb"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="recordButton" destination="cQq-pi-ajh" id="SsB-Z5-16u"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -54,4 +84,8 @@
             <point key="canvasLocation" x="-729" y="-1323"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn_speech-sound_nor" width="46" height="46"/>
+        <image name="btn_speech-sound_sel" width="46" height="46"/>
+    </resources>
 </document>

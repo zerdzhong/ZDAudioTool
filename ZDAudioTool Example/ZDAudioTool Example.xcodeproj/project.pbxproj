@@ -13,6 +13,7 @@
 		5C01FAC41A654E3300A0BB98 /* NewRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C01FAC31A654E3300A0BB98 /* NewRecordController.m */; };
 		5C01FAC61A654EB700A0BB98 /* NewRecordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C01FAC51A654EB700A0BB98 /* NewRecordController.xib */; };
 		5C01FACA1A656CB800A0BB98 /* ProgressButtion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C01FAC91A656CB800A0BB98 /* ProgressButtion.m */; };
+		5C2B5C741A66026E00182058 /* ZDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2B5C731A66026E00182058 /* ZDTableViewCell.m */; };
 		5CC8F85E1A64AD65006FBCB7 /* ZDAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC8F85D1A64AD65006FBCB7 /* ZDAudioRecorder.m */; };
 		5CC8F8601A64AE0E006FBCB7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC8F85F1A64AE0E006FBCB7 /* AudioToolbox.framework */; };
 		5CEAB5481A641A8900380386 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CEAB5461A641A8900380386 /* Main.storyboard */; };
@@ -42,6 +43,8 @@
 		5C01FAC51A654EB700A0BB98 /* NewRecordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewRecordController.xib; sourceTree = "<group>"; };
 		5C01FAC81A656CB800A0BB98 /* ProgressButtion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressButtion.h; sourceTree = "<group>"; };
 		5C01FAC91A656CB800A0BB98 /* ProgressButtion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressButtion.m; sourceTree = "<group>"; };
+		5C2B5C721A66026E00182058 /* ZDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDTableViewCell.h; sourceTree = "<group>"; };
+		5C2B5C731A66026E00182058 /* ZDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDTableViewCell.m; sourceTree = "<group>"; };
 		5CC8F85B1A64ABDA006FBCB7 /* ZDAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDAudioTool.h; sourceTree = "<group>"; };
 		5CC8F85C1A64AD65006FBCB7 /* ZDAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZDAudioRecorder.h; sourceTree = "<group>"; };
 		5CC8F85D1A64AD65006FBCB7 /* ZDAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZDAudioRecorder.m; sourceTree = "<group>"; };
@@ -103,6 +106,8 @@
 			children = (
 				5C01FAC81A656CB800A0BB98 /* ProgressButtion.h */,
 				5C01FAC91A656CB800A0BB98 /* ProgressButtion.m */,
+				5C2B5C721A66026E00182058 /* ZDTableViewCell.h */,
+				5C2B5C731A66026E00182058 /* ZDTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C2B5C741A66026E00182058 /* ZDTableViewCell.m in Sources */,
 				5C01FACA1A656CB800A0BB98 /* ProgressButtion.m in Sources */,
 				5C01FAC41A654E3300A0BB98 /* NewRecordController.m in Sources */,
 				5CC8F85E1A64AD65006FBCB7 /* ZDAudioRecorder.m in Sources */,
