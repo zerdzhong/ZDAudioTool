@@ -11,6 +11,4 @@
 
 @interface ZDTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet ProgressButtion *recordButton;
-
 @end

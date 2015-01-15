@@ -38,14 +38,38 @@
                                                 <action selector="onRecordClicked:" destination="moh-Yp-adu" eventType="touchUpInside" id="3wb-sY-LSG"/>
                                             </connections>
                                         </button>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KzA-ZO-h0g" customClass="ProgressButtion">
+                                            <rect key="frame" x="462" y="8" width="55" height="43"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="Ys7-h5-TtM"/>
+                                                <constraint firstAttribute="height" constant="55" id="i16-gE-aMa"/>
+                                            </constraints>
+                                            <state key="normal" image="btn_play_nor">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="btn_play_sel"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="i16-gE-aMa"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <action selector="onPlayClicked:" destination="moh-Yp-adu" eventType="touchUpInside" id="agA-Vb-drq"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="cQq-pi-ajh" firstAttribute="centerY" secondItem="KzA-ZO-h0g" secondAttribute="centerY" id="1wm-Zp-N2N"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="cQq-pi-ajh" secondAttribute="bottom" id="7c8-MD-iYY"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="cQq-pi-ajh" secondAttribute="trailing" id="PJw-cQ-TvY"/>
+                                        <constraint firstItem="cQq-pi-ajh" firstAttribute="height" secondItem="KzA-ZO-h0g" secondAttribute="height" id="R98-AR-h7Y"/>
+                                        <constraint firstItem="cQq-pi-ajh" firstAttribute="leading" secondItem="KzA-ZO-h0g" secondAttribute="trailing" constant="20" id="Sci-fj-PM3"/>
                                         <constraint firstItem="cQq-pi-ajh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JvB-Cs-CTF" secondAttribute="topMargin" id="YeP-wx-mvb"/>
+                                        <constraint firstItem="cQq-pi-ajh" firstAttribute="width" secondItem="KzA-ZO-h0g" secondAttribute="width" id="shb-R6-XXh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="playButton" destination="KzA-ZO-h0g" id="Xow-zu-M4f"/>
                                     <outlet property="recordButton" destination="cQq-pi-ajh" id="SsB-Z5-16u"/>
                                 </connections>
                             </tableViewCell>
@@ -65,7 +89,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0OO-sX-Imn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="-1323"/>
+            <point key="canvasLocation" x="36" y="-1324"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6NN-ly-geJ">
@@ -85,6 +109,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn_play_nor" width="46" height="46"/>
+        <image name="btn_play_sel" width="46" height="46"/>
         <image name="btn_speech-sound_nor" width="46" height="46"/>
         <image name="btn_speech-sound_sel" width="46" height="46"/>
     </resources>

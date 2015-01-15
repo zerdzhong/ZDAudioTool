@@ -13,6 +13,11 @@
 @interface ZDTableViewCell () <ZDAudioRecorderDelegate>
 
 @property (nonatomic, strong) ZDAudioRecorder *audioRecorder;
+@property (nonatomic, strong) ZDAudioPlayer *audioPlayer;
+
+@property (weak, nonatomic) IBOutlet ProgressButtion *recordButton;
+
+@property (weak, nonatomic) IBOutlet ProgressButtion *playButton;
 
 @end
 
@@ -22,6 +27,8 @@
     // Initialization code
     _audioRecorder = [[ZDAudioRecorder alloc]init];
     _audioRecorder.delegate = self;
+    
+    [self.textLabel addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -35,12 +42,24 @@
         _recordButton.selected = YES;
         [_recordButton initProgress];
         //开始录音
-        [_audioRecorder startRecord:@"test.pcm"];
+        NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.caf",self.textLabel.text]];
+        NSLog(@"%@",filePath);
+        [_audioRecorder startRecord:filePath];
     }else{
         //停止录音
         [_audioRecorder stopRecord];
         _recordButton.selected = NO;
+        [self checkAudioExist];
     }
+}
+
+- (IBAction)onPlayClicked:(id)sender {
+    if (_audioPlayer == nil) {
+        NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.caf",self.textLabel.text]];
+        _audioPlayer = [[ZDAudioPlayer alloc]initWithFilePath:filePath];
+    }
+    
+    [_audioPlayer play];
 }
 
 #pragma ZDAudioToolDelegate
@@ -74,6 +93,29 @@
     
     [_recordButton drawProgress:level];
     
+}
+
+
+- (void)checkAudioExist{
+    NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.caf",self.textLabel.text]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:filePath]) {
+        _playButton.hidden = NO;
+    }else{
+        _playButton.hidden = YES;
+    }
+}
+
+#pragma mark- KVO
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"text"]) {
+        [self checkAudioExist];
+    }
+}
+
+- (void)dealloc
+{
+    [self.textLabel removeObserver:self forKeyPath:@"text"];
 }
 
 @end

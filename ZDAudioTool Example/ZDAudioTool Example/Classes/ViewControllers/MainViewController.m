@@ -10,6 +10,8 @@
 #import "NewRecordController.h"
 #import "ZDAudioTool.h"
 
+#define kFilePath         [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"records.data"]
+
 @interface MainViewController () <ZDAudioRecorderDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *recordButton;
@@ -25,7 +27,10 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.tableView.tableFooterView = [UIView new];
-    self.recordTitles = [NSMutableArray array];
+    self.recordTitles = [NSKeyedUnarchiver unarchiveObjectWithFile:kFilePath];
+    if (self.recordTitles == nil) {
+        self.recordTitles = [NSMutableArray array];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +44,7 @@
     __unsafe_unretained MainViewController *main = self;
     
     newRecordVC.completionBlock = ^(NSString *title) {
-        [_recordTitles addObject:title];
+        [self addRecordTitlesObject:title];
         [main.tableView reloadData];
     };
     
@@ -81,5 +86,22 @@
     
     return cell;
 }
+
+#pragma mark- KVO
+-(void)insertObject:(NSString *)object inRecordTitlesAtIndex:(NSUInteger)index{
+    [_recordTitles insertObject:object atIndex:index];
+    [NSKeyedArchiver archiveRootObject:_recordTitles toFile:kFilePath];
+}
+
+-(void)removeObjectFromRecordTitlesAtIndex:(NSUInteger)index{
+    [_recordTitles removeObjectAtIndex:index];
+    [NSKeyedArchiver archiveRootObject:_recordTitles toFile:kFilePath];
+}
+
+-(void)addRecordTitlesObject:(NSString *)object{
+    [_recordTitles addObject:object];
+    [NSKeyedArchiver archiveRootObject:_recordTitles toFile:kFilePath];
+}
+
 
 @end
